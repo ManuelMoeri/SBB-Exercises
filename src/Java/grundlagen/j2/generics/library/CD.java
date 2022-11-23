@@ -7,10 +7,12 @@ public class CD {
 
     private String director;
     private String genre;
+    private Boolean rented;
 
-    public CD(String director, String genre) {
+    public CD(String director, String genre, Boolean rented) {
         this.director = director;
         this.genre = genre;
+        this.rented = rented;
     }
 
     public String getDirector() {
@@ -19,6 +21,10 @@ public class CD {
 
     public String getGenre() {
         return genre;
+    }
+
+    public Boolean getRented() {
+        return rented;
     }
 
     public static List<CD> allCDs = new ArrayList<>();

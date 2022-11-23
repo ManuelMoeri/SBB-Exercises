@@ -7,10 +7,12 @@ public class DVD {
 
     private String artistName;
     private int amountOfSongs;
+    private Boolean rented;
 
-    public DVD(String artistName, int amountOfSongs) {
+    public DVD(String artistName, int amountOfSongs, Boolean rented) {
         this.artistName = artistName;
         this.amountOfSongs = amountOfSongs;
+        this.rented = rented;
     }
 
     public String getArtistName() {
@@ -19,6 +21,10 @@ public class DVD {
 
     public int getAmountOfSongs() {
         return amountOfSongs;
+    }
+
+    public Boolean getRented() {
+        return rented;
     }
 
     public static List<DVD> allDVDs = new ArrayList<>();
