@@ -43,7 +43,7 @@ public class Items {
 
     public static void allItemsMethod() {
         allItems.add(new Items("Bread", 10, false, "f1", 2));
-        allItems.add(new Items("Butter Pretzel", 1, true, "f2", 3));
+        allItems.add(new Items("Butter pretzel", 1, true, "f2", 3));
         allItems.add(new Items("Deep frozen pizza", 7, true, "f3", 12));
         allItems.add(new Items("Vacuum cleaner", 12, true, "h1", 120));
         allItems.add(new Items("Washing machine", 31, true, "h2", 400));
@@ -51,6 +51,5 @@ public class Items {
         allItems.add(new Items("Wood", 27, true, "b1", 40));
         allItems.add(new Items("Stone", 9, true, "b2", 75));
         allItems.add(new Items("Diamonds", 36, true, "b3", 10000));
-
     }
 }

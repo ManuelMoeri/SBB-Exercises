@@ -78,7 +78,6 @@ public class AdressbookPersons {
     }
 
     public static void main(String[] args) {
-
         AdressbookCommands();
     }
 }
