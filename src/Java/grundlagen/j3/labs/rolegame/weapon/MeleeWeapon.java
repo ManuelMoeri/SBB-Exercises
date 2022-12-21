@@ -7,4 +7,11 @@ public class MeleeWeapon extends Weapon {
         super(weaponName, weight, attackValue);
         this.defenseValue = defenseValue;
     }
+
+    @Override
+    public double getAttackValue() {
+        double finalDamage = super.getAttackValue();
+        finalDamage = finalDamage + this.defenseValue / 2.0;
+        return finalDamage;
+    }
 }

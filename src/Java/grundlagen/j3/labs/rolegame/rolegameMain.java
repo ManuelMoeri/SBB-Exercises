@@ -27,7 +27,10 @@ public class rolegameMain {
     public static final Sword SWORD = new Sword("Sword", 4, 9, 4);
 
     public static void main(String[] args) {
-        ORC.setWeapon(BOW);
-        DWARF.setWeapon(SWORD);
+        ORC.takeWeapon(BOW);
+        ORC.weaponInventory.add(BOW);
+        DWARF.takeWeapon(SWORD);
+        DWARF.weaponInventory.add(SWORD);
+        DWARF.dropWeapon(SWORD);
     }
 }
