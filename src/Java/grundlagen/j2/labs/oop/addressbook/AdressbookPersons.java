@@ -1,16 +1,19 @@
 package Java.grundlagen.j2.labs.oop.addressbook;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AdressbookPersons {
 
-    private Adressbook adressbook;
+    public static Adressbook addressbook = new Adressbook();
 
     public AdressbookPersons(Adressbook adressbook) {
-        this.adressbook = adressbook;
+        this.addressbook = adressbook;
     }
 
-    public static void AdressbookCommands() {        String homemenu = null;
+    public static void AdressbookCommands() {
+        String homemenu = null;
         Scanner userInput = new Scanner(System.in);
 
         do {
@@ -38,13 +41,14 @@ public class AdressbookPersons {
             String phonenumberOfContact = userInput.nextLine();
             System.out.println("Sucess! The contact has been created.");
 
-            Adressbook.NewAdressbook(emailOfContact, nameOfContact, phonenumberOfContact);
+            Person c = new Person(emailOfContact, nameOfContact, phonenumberOfContact);
+            addressbook.allContacts.add(c);
             AdressbookCommands();
 
         } else if (homemenu.equals("/search")) {
             System.out.println("Please enter the name you're looking for: ");
             String searchPerson = userInput.nextLine();
-            for (Adressbook objectFromList: Adressbook.allContacts) {
+            for (Person objectFromList : addressbook.allContacts) {
                 if (objectFromList.getName().equals(searchPerson)) {
                     System.out.println("E-mail: " + objectFromList.getEmail());
                     System.out.println("Name: " + objectFromList.getName());
@@ -54,11 +58,11 @@ public class AdressbookPersons {
             AdressbookCommands();
 
         } else if (homemenu.equals("/rmcontact")) {
-            for (Adressbook objectFromList2: Adressbook.allContacts) {
+            for (Person objectFromList2 : addressbook.allContacts) {
                 System.out.println("Please enter the e-mail adress to remove this contact:");
                 String emailFromUser = userInput.nextLine();
                 if (objectFromList2.getEmail().equals(emailFromUser)) {
-                    Adressbook.allContacts.remove(objectFromList2);
+                    addressbook.allContacts.remove(objectFromList2);
                     System.out.println("The contact has been succesfully removed!");
                     AdressbookCommands();
                 } else {
@@ -69,13 +73,14 @@ public class AdressbookPersons {
 
 
         } else if (homemenu.equals("/count")) {
-            System.out.println("There are " + Adressbook.allContacts.size() + " contacts in your Addressbook.");
+            System.out.println("There are " + addressbook.allContacts.size() + " contacts in your Addressbook.");
             AdressbookCommands();
 
         } else if (homemenu.equals("/exit")) {
             System.exit(0);
         }
     }
+
 
     public static void main(String[] args) {
         AdressbookCommands();

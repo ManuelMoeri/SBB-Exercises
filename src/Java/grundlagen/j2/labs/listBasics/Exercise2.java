@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Exercise2 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {  // Zu viele Arrays verwendet -> neue Lösung suchen
         Scanner userInput = new Scanner(System.in);
 
         List<String> allWords = new ArrayList<>();

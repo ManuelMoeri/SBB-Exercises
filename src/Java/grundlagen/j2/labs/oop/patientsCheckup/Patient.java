@@ -36,6 +36,8 @@ public class Patient {
         return vaccinated;
     }
 
+    //methode entfernen, wird nicht benötigt
+
     public static void createNewPatient(String patientName, int patientage, float patientsize, float patientTemperature, String patientVaccinated) {
         Patient example = new Patient(patientName, patientage, patientsize, patientTemperature, patientVaccinated);
     }

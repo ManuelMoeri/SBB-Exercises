@@ -54,6 +54,11 @@ public class Character {
     public void setActiveWeapon(Weapon activeWeapon) {
         this.activeWeapon = activeWeapon;
     }
+
+    public void setHealthPoints(double healthPoints) {
+        this.healthPoints = healthPoints;
+    }
+
     public List<Weapon> weaponInventory = new ArrayList<>();
     public List<Item> itemInventory = new ArrayList<>();
 
@@ -84,5 +89,33 @@ public class Character {
         } else {
             System.out.println("This item is to heavy for you!");
         }
+    }
+    public void useItem(Item itemToUse) {
+
+        String whichItem = itemToUse.getItemName();
+        switch (whichItem) {
+            case "Ring of power" -> ringOfPowerMethod1();
+            case "Ring of protection" -> ringOfProtectionMethod();
+            case "Healing of Potion" -> healingPotionMethod();
+            case "Strength Potion" -> strengthPotionMethod();
+        }
+    }
+
+    public void ringOfPowerMethod1() {
+        this.setCarryingCapacity(this.getCarryingCapacity() + 2);
+    }
+
+    public void ringOfProtectionMethod() {
+
+    }
+
+    public void healingPotionMethod() {
+        this.setHealthPoints(this.getHealthPoints() + 20);
+    }
+
+    public double strengthPotionMethod() {
+        double finalDamage = 0;
+        finalDamage = activeWeapon.getAttackValue() * 2;
+        return finalDamage;
     }
 }

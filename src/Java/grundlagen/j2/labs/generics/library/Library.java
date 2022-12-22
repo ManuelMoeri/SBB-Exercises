@@ -20,6 +20,8 @@ public class Library {
             case "/inventory" -> inventorycase();
             case "/exit" -> exitcase();
         }
+
+        // In einer Methode generics verwenden.
     }
 
     public static void helpcase() {

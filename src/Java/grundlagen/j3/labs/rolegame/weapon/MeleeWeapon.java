@@ -14,4 +14,8 @@ public class MeleeWeapon extends Weapon {
         finalDamage = finalDamage + this.defenseValue / 2.0;
         return finalDamage;
     }
+
+    public int getDefenseValue() {
+        return defenseValue;
+    }
 }

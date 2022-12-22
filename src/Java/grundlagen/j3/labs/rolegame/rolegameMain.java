@@ -28,9 +28,9 @@ public class rolegameMain {
 
     public static void main(String[] args) {
         ORC.takeWeapon(BOW);
-        ORC.weaponInventory.add(BOW);
         DWARF.takeWeapon(SWORD);
-        DWARF.weaponInventory.add(SWORD);
         DWARF.dropWeapon(SWORD);
+        HUMAN.takeItem(RING_OF_POWER);
+        HUMAN.useItem(RING_OF_POWER);
     }
 }
