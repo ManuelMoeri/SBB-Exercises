@@ -1,8 +1,8 @@
-package Java.grundlagen.j2.labs.oop.patientsCheckup;
+package Java.grundlagen.j2.labs.oop.patient;
 
 import java.util.Scanner;
 
-public class PatientCheckup {
+public class Patient {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -37,6 +37,10 @@ public class PatientCheckup {
 
         System.out.println("The name of the patient is: " + nameOfPatient + ". The patient is " + ageOfPatient + " years old, is " + sizeOfPatient + " cm big and has a body temperature of " + temperatureOfPatient + " degrees. The patient is " + vaccinatedPatient + "." );
 
-        Patient.createNewPatient(nameOfPatient, ageOfPatient, sizeOfPatient, temperatureOfPatient, vaccinatedPatient);
+        createNewPatient(nameOfPatient, ageOfPatient, sizeOfPatient, temperatureOfPatient, vaccinatedPatient);
+    }
+
+    public static void createNewPatient(String patientName, int patientage, float patientsize, float patientTemperature, String patientVaccinated) {
+        PatientCheckup example = new PatientCheckup(patientName, patientage, patientsize, patientTemperature, patientVaccinated);
     }
 }

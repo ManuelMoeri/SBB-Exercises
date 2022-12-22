@@ -45,11 +45,4 @@ public class RentalAgreements {
         return agreementID;
     }
 
-    public static List<RentalAgreements> allAgreements = new ArrayList<>();
-
-    public static void allAgreementsMethod() {
-        allAgreements.add(new RentalAgreements(365, 1500, "#1", "RS_1", "12", "AID_1"));
-        allAgreements.add(new RentalAgreements(243, 4000, "#2", "RS_2", "17", "AID_2"));
-        allAgreements.add(new RentalAgreements(672, 2000, "#7", "RS_3", "6", "AID_3"));
-    }
 }

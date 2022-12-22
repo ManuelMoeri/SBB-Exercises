@@ -70,7 +70,7 @@ public class Cööp {
         System.out.println("You can add your last item now! Press enter to skip");
         fifthItem = userInput.nextLine();
 
-        CartInventory.NewInventory(firstItem, secondItem, thirdItem, fourthItem, fifthItem);
+        CööpInstances.NewInventory(firstItem, secondItem, thirdItem, fourthItem, fifthItem);
         CööpCommands();
     }
 
@@ -101,7 +101,7 @@ public class Cööp {
     }
 
     public static void inventorycase() {
-        CartInventory.wholeInventory.stream().forEach(System.out::println); //Die Liste wird noch nicht richtig geprintet, muss gefixt werden.
+        CööpInstances.wholeInventory.stream().forEach(System.out::println); //Die Liste wird noch nicht richtig geprintet, muss gefixt werden.
         CööpCommands();
     }
 
@@ -140,7 +140,7 @@ public class Cööp {
             case "1":
                 System.out.println("Which Item are you looking for?");
                 String whichItem = userInput.nextLine();
-                for (Items objectFromList : Items.allItems) {
+                for (Items objectFromList : CööpInstances.allItems) {
                     if (whichItem.equals(objectFromList.getItemName())) {
                         System.out.println("The Item is located in Shelf number " + objectFromList.getShelfNumber());
                     } else {
@@ -162,7 +162,7 @@ public class Cööp {
                         case "1":
                             System.out.println("For which employee would you like to see the company?");
                             String whichEmployee = userInput.nextLine();
-                            for (Employees objectFromList : Employees.allEmployees) {
+                            for (Employees objectFromList : CööpInstances.allEmployees) {
                                 if (whichEmployee.equals(objectFromList.getEmployeeName())) {
                                     System.out.println("The Employee is in the company " + objectFromList.getInWhichCompany());
                                     System.out.println("--------------------------------------------");
@@ -191,14 +191,14 @@ public class Cööp {
         String whichCheckout = userInput.nextLine();
         switch (whichCheckout) {
             case "1":
-                for (CartInventory objectFromList : CartInventory.wholeInventory) {
+                for (CartInventory objectFromList : CööpInstances.wholeInventory) {
                     String userItem1 = objectFromList.getItem1();
                     String userItem2 = objectFromList.getItem2();
                     String userItem3 = objectFromList.getItem3();
                     String userItem4 = objectFromList.getItem4();
                     String userItem5 = objectFromList.getItem5();
 
-                    for (Items objectFromList2 : Items.allItems) {
+                    for (Items objectFromList2 : CööpInstances.allItems) {
                         if (userItem1.equals(objectFromList2.getItemName())) {
                             priceUserItem1 = objectFromList2.getPrice();
                         }
@@ -260,7 +260,7 @@ public class Cööp {
                 break;
             case "2":
                 System.out.println("Which items did you buy? Please enter these items (max 5)");
-                for (Items objectFromList : Items.allItems) {
+                for (Items objectFromList : CööpInstances.allItems) {
                     System.out.println("- " + objectFromList.getItemName());
                 }
                 String selfItem1 = userInput.nextLine();
@@ -269,7 +269,7 @@ public class Cööp {
                 String selfItem4 = userInput.nextLine();
                 String selfItem5 = userInput.nextLine();
 
-                for (Items objectFromList : Items.allItems) {
+                for (Items objectFromList : CööpInstances.allItems) {
                     if (selfItem1.equals(objectFromList.getItemName())) {
                         priceSelfItem1 = objectFromList.getPrice();
                     }
@@ -336,9 +336,9 @@ public class Cööp {
     }
 
     public static void main(String[] args) {
-        Items.allItemsMethod();
-        Companys.allCompanysMethod();
-        Employees.allEmployeesMethod();
+        CööpInstances.allItemsMethod();
+        CööpInstances.allCompanysMethod();
+        CööpInstances.allEmployeesMethod();
         CööpCommands();
     }
 }

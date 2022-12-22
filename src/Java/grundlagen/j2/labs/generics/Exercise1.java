@@ -1,6 +1,6 @@
 package Java.grundlagen.j2.labs.generics;
 
-public class Execise1 {
+public class Exercise1 {
     public static<T> void test(T[] objectInput) {
         for(T t: objectInput) {
             System.out.print(t + " ");

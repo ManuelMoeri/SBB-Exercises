@@ -3,10 +3,10 @@ package Java.grundlagen.j2.labs.generics;
 import java.util.ArrayList;
 import java.util.List;
 
-class NumberList<T> {
+class Exercise2<T> {
     private List<T> allNumbers;
 
-    public NumberList(List<T> allNumbers) {
+    public Exercise2(List<T> allNumbers) {
         this.allNumbers = allNumbers;
     }
 

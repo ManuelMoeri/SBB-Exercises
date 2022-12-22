@@ -27,13 +27,4 @@ public class Employees {
         return assignedRealEstate;
     }
 
-
-    public static List<Employees> allEmployees = new ArrayList<>();
-
-
-    public static void allEmployeesMethod() {
-        allEmployees.add(new Employees("Paul Fred", "paul@mylittleagency.ch", "#1"));
-        allEmployees.add(new Employees("Fred Fritz", "fred@mylittleagency.ch", "#2"));
-        allEmployees.add(new Employees("Fritz Paul", "fritz@mylittleagency.ch", "#3"));
-    }
 }

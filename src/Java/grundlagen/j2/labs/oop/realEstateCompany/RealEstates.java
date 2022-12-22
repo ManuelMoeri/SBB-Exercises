@@ -34,12 +34,4 @@ public class RealEstates {
         return housenumber;
     }
 
-
-    public static List<RealEstates> allImmobillies = new ArrayList<>();
-
-    public static void allImmobilliesMethod() {
-        allImmobillies.add(new RealEstates("RS_1", "Bern", "Bärengasse", "34"));
-        allImmobillies.add(new RealEstates("RS_2", "Bern", "Speicherstrasse", "8"));
-        allImmobillies.add(new RealEstates("RS_3", "Bern", "Bahnhofgasse", "12"));
-    }
 }

@@ -1,4 +1,4 @@
-package Java.grundlagen.j2.labs.streamsBasics;
+package Java.grundlagen.j2.labs.streamsBasic;
 
 import java.util.ArrayList;
 import java.util.List;

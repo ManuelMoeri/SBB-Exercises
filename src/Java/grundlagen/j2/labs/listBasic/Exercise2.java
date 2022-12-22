@@ -1,4 +1,4 @@
-package Java.grundlagen.j2.labs.listBasics;
+package Java.grundlagen.j2.labs.listBasic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Exercise2 {
 
-    public static void main(String[] args) {  // Zu viele Arrays verwendet -> neue Lösung suchen
+    public static void main(String[] args) {  // Zu viele Arrays verwendet → neue Lösung suchen
         Scanner userInput = new Scanner(System.in);
 
         List<String> allWords = new ArrayList<>();
@@ -21,8 +21,6 @@ public class Exercise2 {
             allWords.add(stringFromArray);
         }
 
-        int length = splittedWordsReverse.length -1;
-
         System.out.println("Amount of words in the String: " + splittedWords.length);
         System.out.println("The words: " + wordsOfCustomer);
 
@@ -31,6 +29,8 @@ public class Exercise2 {
                 System.out.println("All nouns uppercase: " + stringFromList.toUpperCase());
             }
         }
+
+        int length = splittedWordsReverse.length -1;
 
         System.out.println("Words reverse :");
         while (length >= 0) {

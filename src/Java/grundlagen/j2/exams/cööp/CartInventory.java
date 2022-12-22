@@ -34,11 +34,4 @@ public class CartInventory {
     public String getItem5() {
         return item5;
     }
-
-    public static List<CartInventory> wholeInventory = new ArrayList<>();
-
-    public static void NewInventory(String userItem1, String userItem2, String userItem3, String userItem4, String userItem5) {
-        CartInventory c = new CartInventory(userItem1, userItem2, userItem3, userItem4, userItem5);
-        wholeInventory.add(c);
-    }
 }

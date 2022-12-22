@@ -1,5 +1,7 @@
 package Java.grundlagen.j2.labs.oop.realEstateCompany;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class RealEstateCompany {
@@ -42,7 +44,7 @@ public class RealEstateCompany {
     }
 
     public static void allapartmenscase() {
-        System.out.println("There are a total of " + Apartments.allApartments.size() + " apartments.");
+        System.out.println("There are a total of " + RealEstateInstance.allApartments.size() + " apartments.");
         RealEstateCompanyCommands();
     }
 
@@ -50,7 +52,7 @@ public class RealEstateCompany {
         Scanner keeperInput = new Scanner(System.in);
         System.out.println("On which apartment would you like to see the keeper? There is apartment 12, 7, 17, 3, 6 and 2");
         int apartmentNumberOfCustomer = keeperInput.nextInt();
-        for (Apartments objectFromList: Apartments.allApartments) {
+        for (Apartments objectFromList: RealEstateInstance.allApartments) {
             if (objectFromList.getApartmentNumber() == apartmentNumberOfCustomer) {
                 System.out.println("The keeper of this apartment is " + objectFromList.getKeeper());
             }
@@ -64,7 +66,7 @@ public class RealEstateCompany {
         System.out.println("RS_3 = ID for \"Bahnhofgasse 12\"");
         System.out.println("For which real estate would you like to see the agreements/contracts? Please enter the ID of the real estate");
         String realEstateAgreements = userInput.nextLine();
-        for (RentalAgreements objectFromList2: RentalAgreements.allAgreements) {
+        for (RentalAgreements objectFromList2: RealEstateInstance.allAgreements) {
             if (objectFromList2.getAgreementForEstate().equals(realEstateAgreements)) {
                 System.out.println("This contract has the ID: " + objectFromList2.getAgreementID());
                 System.out.println("The agreement expires in " + objectFromList2.getHowManyDaysTillAgreementexpired() + " days");
@@ -82,7 +84,7 @@ public class RealEstateCompany {
         System.out.println("RS_3 = ID for \"Bahnhofgasse 12\"");
         System.out.println("For which real estate would you like to see the empty apartments? Please enter the ID of the real estate");
         String whichRealEstateUser = userInput.nextLine();
-        for (Apartments objectFromList3: Apartments.allApartments) {
+        for (Apartments objectFromList3: RealEstateInstance.allApartments) {
             if (objectFromList3.getRealEstateId().equals(whichRealEstateUser) && objectFromList3.getEmpty()) {
                 System.out.println("The apartment " + objectFromList3.getApartmentNumber() + " is free!");
             }
@@ -91,7 +93,7 @@ public class RealEstateCompany {
     }
 
     public static void expiringagreementscase() {
-        for (RentalAgreements objectFromList4: RentalAgreements.allAgreements) {
+        for (RentalAgreements objectFromList4: RealEstateInstance.allAgreements) {
             if (objectFromList4.getHowManyDaysTillAgreementexpired() <= 30) {
                 System.out.println("This contract has the ID: " + objectFromList4.getAgreementID());
                 System.out.println("The agreement expires in " + objectFromList4.getHowManyDaysTillAgreementexpired() + " days");
@@ -119,7 +121,7 @@ public class RealEstateCompany {
         System.out.println("Type /leave to leave the method");
         System.out.println("Please type in the person ID to see their agreements");
         String whichPerson = userInput.nextLine();
-        for (RentalAgreements objectFromList5: RentalAgreements.allAgreements) {
+        for (RentalAgreements objectFromList5: RealEstateInstance.allAgreements) {
             if (objectFromList5.getWhosAgreement().equals(whichPerson)) {
                 System.out.println("This person belongs to the agreement ID: " + objectFromList5.getAgreementID());
                 allagreementscase();
@@ -138,7 +140,7 @@ public class RealEstateCompany {
         System.out.println("RS_3 = ID for \"Bahnhofgasse 12\"");
         System.out.println("For which real estate would you like to see the monthlyincome? Please enter the ID of the real estate");
         String whichEstate = userInput.nextLine();
-        for (RentalAgreements objectFromList6: RentalAgreements.allAgreements) {
+        for (RentalAgreements objectFromList6: RealEstateInstance.allAgreements) {
             if (objectFromList6.getAgreementForEstate().equals(whichEstate)) {
                 System.out.println("This real estate makes a total of " + objectFromList6.getMonthlyPrice() + ".- in one month");
             }
@@ -153,17 +155,17 @@ public class RealEstateCompany {
         String ID1 = "RS_1";
         String ID2 = "RS_2";
         String ID3 = "RS_3";
-        for (RentalAgreements objectFromList7: RentalAgreements.allAgreements) {
+        for (RentalAgreements objectFromList7: RealEstateInstance.allAgreements) {
             if (objectFromList7.getAgreementForEstate().equals(ID1)) {
                 monthlyPrice1 = objectFromList7.getMonthlyPrice();
             }
         }
-        for (RentalAgreements objectFromList8: RentalAgreements.allAgreements) {
+        for (RentalAgreements objectFromList8: RealEstateInstance.allAgreements) {
             if (objectFromList8.getAgreementForEstate().equals(ID2)) {
                 monthlyPrice2 = objectFromList8.getMonthlyPrice();
             }
         }
-        for (RentalAgreements objectFromList9: RentalAgreements.allAgreements) {
+        for (RentalAgreements objectFromList9: RealEstateInstance.allAgreements) {
             if (objectFromList9.getAgreementForEstate().equals(ID3)) {
                 monthlyPrice3 = objectFromList9.getMonthlyPrice();
             }
@@ -183,8 +185,12 @@ public class RealEstateCompany {
     }
 
     public static void main(String[] args) {
-        RentalAgreements.allAgreementsMethod();
-        Apartments.allApartmentsMethod();
+        RealEstateInstance.allAgreementsMethod();
+        RealEstateInstance.allApartmentsMethod();
+        RealEstateInstance.allCustomersMethod();
+        RealEstateInstance.allEmployeesMethod();
+        RealEstateInstance.allImmobilliesMethod();
+        RealEstateInstance.newAgencyMethod();
         RealEstateCompanyCommands();
     }
 }

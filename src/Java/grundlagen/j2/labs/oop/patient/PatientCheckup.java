@@ -1,6 +1,6 @@
-package Java.grundlagen.j2.labs.oop.patientsCheckup;
+package Java.grundlagen.j2.labs.oop.patient;
 
-public class Patient {
+public class PatientCheckup {
     private String name;
     private int age;
     private float size;
@@ -8,7 +8,7 @@ public class Patient {
     private String vaccinated;
 
 
-    public Patient(String name, int age, float size, float bodyTemperature, String vaccinated) {
+    public PatientCheckup(String name, int age, float size, float bodyTemperature, String vaccinated) {
         this.name = name;
         this.age = age;
         this.size = size;
@@ -34,11 +34,5 @@ public class Patient {
 
     public String getVaccinated() {
         return vaccinated;
-    }
-
-    //methode entfernen, wird nicht benötigt
-
-    public static void createNewPatient(String patientName, int patientage, float patientsize, float patientTemperature, String patientVaccinated) {
-        Patient example = new Patient(patientName, patientage, patientsize, patientTemperature, patientVaccinated);
     }
 }

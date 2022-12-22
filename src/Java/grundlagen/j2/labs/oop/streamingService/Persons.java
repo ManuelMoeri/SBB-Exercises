@@ -38,13 +38,4 @@ public class Persons {
     public void setCreditCard(String input) {
         this.creditCard = input;
     }
-
-    public static List<Persons> allPersons = new ArrayList<>();
-
-    public static Persons c;
-
-    public static void NewSubs(String nameOfCustomer, String emailOfCustomer, String creditcardOfCustomer, boolean payMethodOfCustomer) {
-        c = new Persons(nameOfCustomer, emailOfCustomer, creditcardOfCustomer, payMethodOfCustomer);
-        allPersons.add(c);
-    }
 }

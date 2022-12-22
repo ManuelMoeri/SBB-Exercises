@@ -24,7 +24,7 @@ public class Library {
         // In einer Methode generics verwenden.
     }
 
-    public static void helpcase() {
+     static <T> void helpcase() {
         System.out.println("/help - See this list again");
         System.out.println("/rent - Rent a object from the library");
         System.out.println("/return - Return a object from the library");

@@ -40,9 +40,4 @@ public class Agency {
         return housenumber;
     }
 
-    public static List<Agency> agencyArrayList = new ArrayList<>();
-
-    public static void newAgency() {
-        agencyArrayList.add(new Agency("My Little Agency", "Switzerland", "Bern", "Bahnhofstrasse", "13"));
-    }
 }

@@ -58,15 +58,15 @@ public class StreamingService {
                 StreamingCommands();
             }
 
-            Persons.NewSubs(nameOfCustomer, emailOfCustomer, creditcardOfCustomer, payMethodMY);
+            StreamingServiceInstance.NewSubs(nameOfCustomer, emailOfCustomer, creditcardOfCustomer, payMethodMY);
             StreamingCommands();
 
         } else if (homemenu.equals("/rmacc")) {
-            for (Persons objectFromList : Persons.allPersons) {
+            for (Persons objectFromList : StreamingServiceInstance.allPersons) {
                 System.out.println("Please enter your e-mail to delete your account");
                 String emailFromUser = userInput.nextLine();
-                if (objectFromList.getEmail().equals(emailFromUser) && Persons.allPersons.size() != 0) {
-                    Persons.allPersons.remove(objectFromList);
+                if (objectFromList.getEmail().equals(emailFromUser) && StreamingServiceInstance.allPersons.size() != 0) {
+                    StreamingServiceInstance.allPersons.remove(objectFromList);
                     System.out.println("The account has been succesfully removed!");
                     StreamingCommands();
                 } else {
@@ -77,15 +77,15 @@ public class StreamingService {
             StreamingCommands();
 
         } else if (homemenu.equals("/allmovies")) {
-            Movies.allmoviesMethod();
-            for (Movies objectFromList1 : Movies.moviesArrayList) {
+            StreamingServiceInstance.allmoviesMethod();
+            for (Movies objectFromList1 : StreamingServiceInstance.moviesArrayList) {
                 System.out.println(objectFromList1.getMovieName());
             }
             StreamingCommands();
 
         } else if (homemenu.equals("/searchmov")) {
             String searchMovieName = userInput.nextLine();
-            for (Movies objectFromList2 : Movies.moviesArrayList) {
+            for (Movies objectFromList2 : StreamingServiceInstance.moviesArrayList) {
                 if (objectFromList2.getMovieName().contains(searchMovieName)) {
                     System.out.println(objectFromList2.getMovieName());
                 }
@@ -95,19 +95,20 @@ public class StreamingService {
         } else if (homemenu.equals("/searchgenre")) {
             System.out.println("Enter the genre you're looking for:");
             String searchMovieGenre = userInput.nextLine();
-            for (Movies objectFromList3 : Movies.moviesArrayList) {
+            for (Movies objectFromList3 : StreamingServiceInstance.moviesArrayList) {
                 if (objectFromList3.getGenre().equals(searchMovieGenre)) {
                     System.out.println(objectFromList3.getMovieName());
                 }
             }
+            StreamingCommands();
 
         } else if (homemenu.equals("/viewed")) {
             System.out.println("Which Movie do you want to mark as viewed? Watch out for lower- and uppercase!");
-            for (Movies objectFromList4 : Movies.moviesArrayList) {
+            for (Movies objectFromList4 : StreamingServiceInstance.moviesArrayList) {
                 System.out.println(objectFromList4.getMovieName());
             }
             String setToViewed = userInput.nextLine();
-            for (Movies objectFromList5 : Movies.moviesArrayList) {
+            for (Movies objectFromList5 : StreamingServiceInstance.moviesArrayList) {
                 if (objectFromList5.getMovieName().equals(setToViewed)) {
                     objectFromList5.setViewed(true);
                     objectFromList5.addWatchestotal(1);
@@ -119,11 +120,11 @@ public class StreamingService {
         } else if (homemenu.equals("/changecreditcard")) {
             System.out.println("Please enter the e-mail address of your account to change the creditcard:");
             String findEmail = userInput.nextLine();
-            for (Persons objectfromlist6 : Persons.allPersons) {
+            for (Persons objectfromlist6 : StreamingServiceInstance.allPersons) {
                 if (objectfromlist6.getEmail().equals(findEmail)) {
                     System.out.println("Please enter your new creditcardnumber");
                     String changeCreditcard = userInput.nextLine();
-                    for (Persons objectFromList7 : Persons.allPersons) {
+                    for (Persons objectFromList7 : StreamingServiceInstance.allPersons) {
                         if (objectFromList7.getEmail().equals(findEmail)) {
                             objectFromList7.setCreditCard(changeCreditcard);
                         }
@@ -136,23 +137,23 @@ public class StreamingService {
             StreamingCommands();
 
         } else if (homemenu.equals("/countaccs")) {
-            System.out.println("There are " + Persons.allPersons.size() + " accounts at the moment");
+            System.out.println("There are " + StreamingServiceInstance.allPersons.size() + " accounts at the moment");
             StreamingCommands();
 
         } else if (homemenu.equals("/viewsonmov")) {
             System.out.println("On which movie would you like to see the views? Please enter the name of the movie (Upper- lowercase!)");
-            for (Movies objectFromList8: Movies.moviesArrayList) {
+            for (Movies objectFromList8: StreamingServiceInstance.moviesArrayList) {
                 System.out.println(objectFromList8.getMovieName());
             }
             String viewsOnMov = userInput.nextLine();
-            for (Movies objectFromList9: Movies.moviesArrayList)
+            for (Movies objectFromList9: StreamingServiceInstance.moviesArrayList)
                 if (objectFromList9.getMovieName().equals(viewsOnMov)) {
                     System.out.println("There are a total of " + objectFromList9.getWatchestotal() + " views on this movie");
                 }
             StreamingCommands();
 
         } else if (homemenu.equals("/paymentmonthly")) {
-            for (Persons test: Persons.allPersons) {
+            for (Persons test: StreamingServiceInstance.allPersons) {
                 if (test.getPayYearMonth()) {
                     System.out.println(test.getCreditCard());
                 }
@@ -166,7 +167,7 @@ public class StreamingService {
     }
 
     public static void main(String[] args) {
-        Movies.allmoviesMethod();
+        StreamingServiceInstance.allmoviesMethod();
         StreamingCommands();
     }
 }

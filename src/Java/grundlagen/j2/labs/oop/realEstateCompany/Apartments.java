@@ -45,14 +45,4 @@ public class Apartments {
         return empty;
     }
 
-    public static List<Apartments> allApartments = new ArrayList<>();
-
-    public static void allApartmentsMethod() {
-        allApartments.add(new Apartments("RS_1", 2, 12, "A nice little apartment with a beautiful view on bern. ", "Paul Fred", false));
-        allApartments.add(new Apartments("RS_1", 1, 7, "Not quite as good a view as apartment 12 but stylishly furnished. ", "Paul Fred", true));
-        allApartments.add(new Apartments("RS_2", 3, 17, "A really big apartment with a nice view. ", "Fred Fritz", false));
-        allApartments.add(new Apartments("RS_2", 1, 3, "A small apartment which is well equiped with any kind of tools.", "Fred Fritz", true));
-        allApartments.add(new Apartments("RS_3", 1, 6, "A big apartment with 2 bedrooms and 2 toilets. ", "Fritz Paul", false));
-        allApartments.add(new Apartments("RS_3", 1, 2, "A little smaller than apartment 6 but still quite big and looks really nice inside. ", "Fritz Paul", true));
-    }
 }

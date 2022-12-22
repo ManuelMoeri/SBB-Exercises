@@ -1,4 +1,4 @@
-package Java.grundlagen.j2.labs.listBasics;
+package Java.grundlagen.j2.labs.listBasic;
 
 import java.util.ArrayList;
 import java.util.List;
