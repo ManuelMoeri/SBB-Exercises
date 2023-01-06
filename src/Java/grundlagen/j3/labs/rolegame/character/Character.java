@@ -1,5 +1,6 @@
 package Java.grundlagen.j3.labs.rolegame.character;
 
+import Java.grundlagen.j3.labs.rolegame.fight;
 import Java.grundlagen.j3.labs.rolegame.item.Item;
 import Java.grundlagen.j3.labs.rolegame.rolegameMain;
 import Java.grundlagen.j3.labs.rolegame.weapon.MeleeWeapon;
@@ -67,7 +68,7 @@ public class Character {
             this.setCarryingCapacity(this.getCarryingCapacity() - weaponToGive.getWeight());
             this.setActiveWeapon(weaponToGive);
             this.weaponInventory.add(weaponToGive);
-            System.out.println("The weapon " + weaponToGive + " has been equipped & added to your inventory!");
+            System.out.println("The weapon " + weaponToGive.getWeaponName() + " has been equipped & added to your inventory!");
         } else {
             System.out.println("This weapon is to heavy for you!");
         }
@@ -85,7 +86,7 @@ public class Character {
         if (itemToTake.getWeight() <= this.carryingCapacity) {
             this.setCarryingCapacity(this.getCarryingCapacity() - itemToTake.getWeight());
             this.itemInventory.add(itemToTake);
-            System.out.println("The item " + itemToTake + " has been added to your inventory!");
+            System.out.println("The item " + itemToTake.getItemName() + " has been added to your inventory!");
         } else {
             System.out.println("This item is to heavy for you!");
         }
@@ -101,12 +102,22 @@ public class Character {
         }
     }
 
+    public void addWeaponToInventory(Weapon weaponToAdd) {
+        rolegameMain.activeCharacters.get(fight.playerNumberInList).takeWeapon(weaponToAdd);
+    }
+
+    public void addItemToInventory(Item itemToAdd1, Item itemToAdd2) {
+        rolegameMain.activeCharacters.get(fight.playerNumberInList).takeItem(itemToAdd1);
+        rolegameMain.activeCharacters.get(fight.playerNumberInList).takeItem(itemToAdd2);
+    }
+
     public void ringOfPowerMethod1() {
         this.setCarryingCapacity(this.getCarryingCapacity() + 2);
     }
 
     public void ringOfProtectionMethod() {
-
+        double damageReceived = this.getDamage() / 10;
+        this.setHealthPoints(this.getHealthPoints() + damageReceived);
     }
 
     public void healingPotionMethod() {

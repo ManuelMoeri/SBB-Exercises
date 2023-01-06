@@ -8,6 +8,10 @@ import Java.grundlagen.j3.labs.rolegame.item.RingOfProtection;
 import Java.grundlagen.j3.labs.rolegame.item.StrengthPotion;
 import Java.grundlagen.j3.labs.rolegame.weapon.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class rolegameMain {
     public static final Dwarf DWARF = new Dwarf("Thorin", 120, 5, null);
     public static final Fairy FAIRY = new Fairy("Elvenia", 100, 6, 10, null);
@@ -26,11 +30,20 @@ public class rolegameMain {
     public static final Club CLUB = new Club("Club", 2, 5, 5);
     public static final Sword SWORD = new Sword("Sword", 4, 9, 4);
 
-    public static void main(String[] args) {
-        ORC.takeWeapon(BOW);
-        DWARF.takeWeapon(SWORD);
-        DWARF.dropWeapon(SWORD);
-        HUMAN.takeItem(RING_OF_POWER);
-        HUMAN.useItem(RING_OF_POWER);
+    public static List<Character> allCharacters = new ArrayList<>();
+    public static List<Character> activeCharacters = new ArrayList<>();
+
+    public static void addStuff() {
+        allCharacters.add(DWARF);
+        allCharacters.add(FAIRY);
+        allCharacters.add(GOBLIN);
+        allCharacters.add(HUMAN);
+        allCharacters.add(ORC);
+        allCharacters.add(TROLL);
+    }
+
+    public static void setActiveCharacter (Character characterPlayer1, Character characterPlayer2) {
+        activeCharacters.add(characterPlayer1);
+        activeCharacters.add(characterPlayer2);
     }
 }

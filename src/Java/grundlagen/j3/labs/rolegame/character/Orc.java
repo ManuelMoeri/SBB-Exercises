@@ -12,7 +12,7 @@ public class Orc extends Character {
     public double getDamage() {
         double finalDamage = super.getDamage();
         if (this.getHealthPoints() <= 35) {
-            finalDamage = finalDamage * 3;
+            finalDamage = finalDamage * 3; // Noch hinzufügen das er nur halb so viel schaden bekommt.
         }
         return finalDamage;
     }

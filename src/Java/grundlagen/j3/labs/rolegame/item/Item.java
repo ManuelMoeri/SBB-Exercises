@@ -11,7 +11,7 @@ public class Item {
     private int weight;
     private String description;
 
-    public Item(String description, int weight, String itemName) {
+    public Item(String itemName, int weight, String description) {
         this.itemName = itemName;
         this.weight = weight;
         this.description = description;
@@ -27,5 +27,9 @@ public class Item {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
