@@ -9,7 +9,6 @@ import Java.grundlagen.j3.labs.rolegame.item.StrengthPotion;
 import Java.grundlagen.j3.labs.rolegame.weapon.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class rolegameMain {
@@ -21,8 +20,8 @@ public class rolegameMain {
     public static final Troll TROLL = new Troll("Trym", 160, 7, null);
 
     public static final RingOfPower RING_OF_POWER = new RingOfPower("Ring of power", 1, "Equip the ring of power to gain +2 carrying capacity!");
-    public static final RingOfProtection RING_OF_PROTECTION = new RingOfProtection("Ring of protection", 2, "Equip the ring of protection to receive 10% less damage!");
-    public static final HealingPotion HEALING_POTION = new HealingPotion("Healing of Potion", 2, "Use the healing potion to restore 20 health!");
+    public static final RingOfProtection RING_OF_PROTECTION = new RingOfProtection("Ring of protection", 1, "Equip this ring to only receive 1/2 of the damage!");
+    public static final HealingPotion HEALING_POTION = new HealingPotion("Healing Potion", 2, "Use the healing potion to restore 20 health!");
     public static final StrengthPotion STRENGTH_POTION = new StrengthPotion("Strength Potion", 1, "Use the strength potion to double your damage for one round!");
 
     public static final Bow BOW = new Bow("Bow", 3, 10);
@@ -46,4 +45,5 @@ public class rolegameMain {
         activeCharacters.add(characterPlayer1);
         activeCharacters.add(characterPlayer2);
     }
+
 }

@@ -1,9 +1,7 @@
 package Java.grundlagen.j3.labs.rolegame;
 
 import Java.grundlagen.j3.labs.rolegame.character.Character;
-import Java.grundlagen.j3.labs.rolegame.character.Dwarf;
 import Java.grundlagen.j3.labs.rolegame.item.Item;
-import Java.grundlagen.j3.labs.rolegame.weapon.Sword;
 import Java.grundlagen.j3.labs.rolegame.weapon.Weapon;
 
 import java.util.Scanner;
@@ -16,28 +14,31 @@ public class fight {
     public static int playerNumberInList = 0;
     public static Character characterPlayer1 = null;
     public static Character characterPlayer2 = null;
+    public static Item item1Player1 = null;
+    public static Item item2Player1 = null;
+    public static Item item1Player2 = null;
+    public static Item item2Player2 = null;
+
 
     public static void fightCommands() {
         do {
             System.out.println("Welcome to my rolegame! Please report bugs immediately");
             System.out.println("What would you like to do? (Enter a number)");
             System.out.println("1 - Start a fight");
-            System.out.println("2 - View all characters");
-            System.out.println("3 - Report a bug");
-            System.out.println("4 - Exit the game");
-            System.out.println("-----------------------------------------------------------------------");
+            System.out.println("2 - Report a bug");
+            System.out.println("3 - Exit the game");
+            System.out.println("---------------------------------------------------------------------------");
             homeMenu = userInput.nextLine();
-        } while (!homeMenu.equals("1") && !homeMenu.equals("2") && !homeMenu.equals("3") && !homeMenu.equals("4"));
+        } while (!homeMenu.equals("1") && !homeMenu.equals("2") && !homeMenu.equals("3"));
 
         switch (homeMenu) {
-            case "1" -> fightCase();
-            case "2" -> viewAllCharactersCase();
-            case "3" -> reportBugCase();
-            case "4" -> exitCase();
+            case "1" -> preperationCase();
+            case "2" -> reportBugCase();
+            case "3" -> exitCase();
         }
     }
 
-    public static void fightCase() {
+    public static void preperationCase() {
         System.out.println(" ");
         System.out.println("Please choose your character Player1 :");
         System.out.println(" ");
@@ -47,7 +48,7 @@ public class fight {
         System.out.println("4 = Bob | Human");
         System.out.println("5 = Zhor The Ruthless | Orc");
         System.out.println("6 = Trym | Troll");
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------");
         String whichCharacter = userInput.nextLine();
 
         switch (whichCharacter) {
@@ -61,7 +62,8 @@ public class fight {
 
         System.out.println(" ");
         System.out.println("Choose your character Player2 :");
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("Please note that it's not allowed to choose the same character twice");
+        System.out.println("---------------------------------------------------------------------------");
         whichCharacter = userInput.nextLine();
 
         switch (whichCharacter) {
@@ -73,6 +75,14 @@ public class fight {
             case "6" : characterPlayer2 = rolegameMain.TROLL; break;
         }
 
+        if (characterPlayer1 == characterPlayer2) {
+            System.out.println("ERROR! This character has been chosen twice");
+            System.out.println("Returning to main menu...");
+            System.out.println("---------------------------------------------------------------------------");
+            System.out.println(" ");
+            fightCommands();
+        }
+
         rolegameMain.setActiveCharacter(characterPlayer1, characterPlayer2);
 
         System.out.println(" ");
@@ -82,7 +92,7 @@ public class fight {
         System.out.println("2 = " + rolegameMain.THROWING_KNIFE.getWeaponName() + " | Weight: " + rolegameMain.THROWING_KNIFE.getWeight() + " | Attackvalue: " + rolegameMain.THROWING_KNIFE.getAttackValue());
         System.out.println("3 = " + rolegameMain.CLUB.getWeaponName() + " | Weight: " + rolegameMain.CLUB.getWeight() + " | Attackvalue: " + rolegameMain.CLUB.getAttackValue());
         System.out.println("4 = " + rolegameMain.SWORD.getWeaponName() + " | Weight: " + rolegameMain.SWORD.getWeight() + " | Attackvalue: " + rolegameMain.SWORD.getAttackValue());
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------");
         String whichWeapon = userInput.nextLine();
         Weapon weaponPlayer1 = null;
 
@@ -94,10 +104,11 @@ public class fight {
         }
 
         characterPlayer1.addWeaponToInventory(weaponPlayer1);
+        characterPlayer1.setActiveWeapon(weaponPlayer1);
 
         System.out.println(" ");
         System.out.println("Choose your weapon Player2 :");
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------");
         whichWeapon = userInput.nextLine();
         Weapon weaponPlayer2 = null;
         playerNumberInList = 1;
@@ -110,6 +121,7 @@ public class fight {
         }
 
         characterPlayer2.addWeaponToInventory(weaponPlayer2);
+        characterPlayer2.setActiveWeapon(weaponPlayer2);
 
 
         System.out.println(" ");
@@ -119,11 +131,9 @@ public class fight {
         System.out.println("2 = " + rolegameMain.RING_OF_PROTECTION.getItemName() + " | Weight: " + rolegameMain.RING_OF_PROTECTION.getWeight() + " | Description: " + rolegameMain.RING_OF_PROTECTION.getDescription());
         System.out.println("3 = " + rolegameMain.HEALING_POTION.getItemName() + " | Weight: " + rolegameMain.HEALING_POTION.getWeight() + " | Description: " + rolegameMain.HEALING_POTION.getDescription());
         System.out.println("4 = " + rolegameMain.STRENGTH_POTION.getItemName() + " | Weight: " + rolegameMain.STRENGTH_POTION.getWeight() + " | Description: " + rolegameMain.STRENGTH_POTION.getDescription());
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------");
         String item1 = userInput.nextLine();
         String item2 = userInput.nextLine();
-        Item item1Player1 = null;
-        Item item2Player1 = null;
         playerNumberInList = 0;
 
         switch (item1) {
@@ -145,12 +155,10 @@ public class fight {
         System.out.println(" ");
         System.out.println("Choose your Items Player2 :");
         System.out.println(" ");
-        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------");
         item1 = userInput.nextLine();
         item2 = userInput.nextLine();
-        Item item1Player2 = null;
-        Item item2Player2 = null;
-        playerNumberInList = 0;
+        playerNumberInList = 1;
 
         switch (item1) {
             case "1" : item1Player2 = rolegameMain.RING_OF_POWER; break;
@@ -166,19 +174,152 @@ public class fight {
             case "4" : item2Player2 = rolegameMain.STRENGTH_POTION; break;
         }
 
-        characterPlayer1.addItemToInventory(item1Player1, item2Player1);
+        characterPlayer2.addItemToInventory(item1Player2, item2Player2);
+        System.out.println(" ");
+        System.out.println("Now, let's begin");
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println(" ");
 
-//        for (int i = 0; i <= 20; i++) {
-//            System.out.println("Round " + i + ":");
-//        }
+        fightInRound();
     }
 
-    public static void viewAllCharactersCase() {
+    public static void fightInRound() {
+        for (int round = 1; round <= 20; round++) {
+            loop:
+            while (true) {
+                System.out.println("Round " + round + ":");
+                System.out.println("---------------------------------------------------------------------------");
+                System.out.println(" ");
+                System.out.println("Player1, what would you like to do?");
+                System.out.println(" ");
+                System.out.println("1 - Attack");
+                System.out.println("2 - Use a item");
+                System.out.println("3 - Surrender");
+                String whatNow = userInput.nextLine();
+                switch (whatNow) {
+                    case "1" -> {attackPlayer1();
+                        break loop;
+                    }
+                    case "2" -> useItemPlayer1();
+                    case "3" -> surrenderPlayer1();
 
+                }
+            }
+            loop:
+            while (true) {
+                System.out.println("Player2, what would you like to do?");
+                System.out.println(" ");
+                System.out.println("1 - Attack");
+                System.out.println("2 - Use a item");
+                System.out.println("3 - Surrender");
+                String whatNow = userInput.nextLine();
+                System.out.println("---------------------------------------------------------------------------");
+                switch (whatNow) {
+                    case "1" -> {
+                        attackPlayer2();
+                        break loop;
+                    }
+                    case "2" -> useItemPlayer2();
+                    case "3" -> surrenderPlayer2();
+                }
+            }
+        }
     }
 
+
+    public static void attackPlayer1() {
+        double randomDamage1 = characterPlayer1.getDamage();
+        characterPlayer2.setHealthPoints(characterPlayer2.getHealthPoints() - randomDamage1);
+        System.out.println(" ");
+        System.out.println("Player1 dealt " + randomDamage1 + " damage");
+        if (characterPlayer2.getHealthPoints() < 0) {
+            System.out.println(" ");
+            System.out.println("Player2 died");
+            System.out.println("Player1 wins!");
+            System.exit(0);
+        }
+        else {
+            System.out.println("Player2 has " + characterPlayer2.getHealthPoints() + " health points left");
+            System.out.println("---------------------------------------------------------------------------");
+            System.out.println(" ");
+        }
+    }
+    public static void useItemPlayer1() {
+        System.out.println("Which item would you like to use?");
+        int itemNumberByUser = 1;
+        int itemNumber = 1;
+        for(Item itemFromCharacter: characterPlayer1.itemInventory) {
+            System.out.println(itemNumber + ": " + itemFromCharacter.getItemName());
+            itemNumber++;
+        }
+
+        System.out.println("Gib die Nummer des Items ein das du willst: ");
+        itemNumberByUser = userInput.nextInt();
+
+        Item itemToUse = characterPlayer1.itemInventory.get(itemNumberByUser - 1);
+
+        switch (itemToUse.getItemName()) {
+            case "Ring of power":
+                characterPlayer1.ringOfPowerMethod();
+                break;
+            case "Ring of protection":
+                characterPlayer1.ringOfProtectionMethod();
+                break;
+            case "Healing Potion":
+                characterPlayer1.healingPotionMethod();
+                break;
+            case "Strength Potion":
+                characterPlayer1.strengthPotionMethod();
+                break;
+        }
+    }
+
+    public static void surrenderPlayer1() {
+        System.out.println(" ");
+        System.out.println("Player1 has surrendered");
+        System.out.println("Player2 wins!");
+        System.exit(0);
+    }
+
+    public static void attackPlayer2() {
+        double randomDamage2 = characterPlayer2.getDamage();
+        characterPlayer1.setHealthPoints(characterPlayer1.getHealthPoints() - randomDamage2);
+        System.out.println(" ");
+        System.out.println("Player2 dealt " + randomDamage2 + " damage");
+        if (characterPlayer1.getHealthPoints() < 0) {
+            System.out.println(" ");
+            System.out.println("Player1 died");
+            System.out.println("Player2 wins!");
+            System.exit(0);
+        }
+        else {
+            System.out.println("Player1 has " + characterPlayer1.getHealthPoints() + " health points left");
+            System.out.println(" ");
+        }
+    }
+
+    public static void useItemPlayer2() {
+        System.out.println("Which item would you like to use?");
+        System.out.println("1 - " + characterPlayer2.itemInventory.get(0).getItemName());
+        System.out.println("2 - " + characterPlayer2.itemInventory.get(1).getItemName());
+        String useWhichItem = userInput.nextLine();
+        switch (useWhichItem) {
+
+        }
+    }
+
+    public static void surrenderPlayer2() {
+        System.out.println(" ");
+        System.out.println("Player2 has surrendered");
+        System.out.println("Player1 wins!");
+        System.exit(0);
+    }
     public static void reportBugCase() {
-
+        System.out.println("Please describe the bug :");
+        String bugDescription = userInput.nextLine();
+        System.out.println("Thanks for supporting the dev team");
+        System.out.println(" ");
+        fightCommands();
     }
 
     public static void exitCase() {

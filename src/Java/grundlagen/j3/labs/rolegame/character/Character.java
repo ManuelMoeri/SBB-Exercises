@@ -3,7 +3,6 @@ package Java.grundlagen.j3.labs.rolegame.character;
 import Java.grundlagen.j3.labs.rolegame.fight;
 import Java.grundlagen.j3.labs.rolegame.item.Item;
 import Java.grundlagen.j3.labs.rolegame.rolegameMain;
-import Java.grundlagen.j3.labs.rolegame.weapon.MeleeWeapon;
 import Java.grundlagen.j3.labs.rolegame.weapon.Weapon;
 
 import javax.swing.*;
@@ -95,7 +94,7 @@ public class Character {
 
         String whichItem = itemToUse.getItemName();
         switch (whichItem) {
-            case "Ring of power" -> ringOfPowerMethod1();
+            case "Ring of power" -> ringOfPowerMethod();
             case "Ring of protection" -> ringOfProtectionMethod();
             case "Healing of Potion" -> healingPotionMethod();
             case "Strength Potion" -> strengthPotionMethod();
@@ -111,13 +110,12 @@ public class Character {
         rolegameMain.activeCharacters.get(fight.playerNumberInList).takeItem(itemToAdd2);
     }
 
-    public void ringOfPowerMethod1() {
+    public void ringOfPowerMethod() {
         this.setCarryingCapacity(this.getCarryingCapacity() + 2);
     }
 
     public void ringOfProtectionMethod() {
-        double damageReceived = this.getDamage() / 10;
-        this.setHealthPoints(this.getHealthPoints() + damageReceived);
+
     }
 
     public void healingPotionMethod() {
