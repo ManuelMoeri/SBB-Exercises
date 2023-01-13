@@ -2,32 +2,32 @@ package Java.grundlagen.j3.labs.rolegame;
 
 import Java.grundlagen.j3.labs.rolegame.character.*;
 import Java.grundlagen.j3.labs.rolegame.character.Character;
-import Java.grundlagen.j3.labs.rolegame.item.HealingPotion;
-import Java.grundlagen.j3.labs.rolegame.item.RingOfPower;
-import Java.grundlagen.j3.labs.rolegame.item.RingOfProtection;
-import Java.grundlagen.j3.labs.rolegame.item.StrengthPotion;
+import Java.grundlagen.j3.labs.rolegame.item.*;
 import Java.grundlagen.j3.labs.rolegame.weapon.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class rolegameMain {
-    public static final Dwarf DWARF = new Dwarf("Thorin", 120, 5, null);
+public class RolegameMain {
+    public static final Dwarf DWARF = new Dwarf("Thorin", 120, 6, null);
     public static final Fairy FAIRY = new Fairy("Elvenia", 100, 6, 10, null);
-    public static final Goblin GOBLIN = new Goblin("Larry", 80, 5, null);
-    public static final Human HUMAN = new Human("Bob", 100, 6, null);
-    public static final Orc ORC = new Orc("Zhor The Ruthless", 140, 9, null);
-    public static final Troll TROLL = new Troll("Trym", 160, 7, null);
+    public static final Goblin GOBLIN = new Goblin("Larry", 80, 7, null);
+    public static final Human HUMAN = new Human("Bob", 100, 7, null);
+    public static final Orc ORC = new Orc("Zhor The Ruthless", 140, 10, null);
+    public static final Troll TROLL = new Troll("Trym", 160, 8, null);
+    public static final ChuckNorris CHUCK_NORRIS = new ChuckNorris("Chuck Norris", 120, 7, null);
 
     public static final RingOfPower RING_OF_POWER = new RingOfPower("Ring of power", 1, "Equip the ring of power to gain +2 carrying capacity!");
-    public static final RingOfProtection RING_OF_PROTECTION = new RingOfProtection("Ring of protection", 1, "Equip this ring to only receive 1/2 of the damage!");
+    public static final RingOfProtection RING_OF_PROTECTION = new RingOfProtection("Ring of protection", 2, "Equip this ring to have a 15 % chance of blocking the attack!");
     public static final HealingPotion HEALING_POTION = new HealingPotion("Healing Potion", 2, "Use the healing potion to restore 20 health!");
-    public static final StrengthPotion STRENGTH_POTION = new StrengthPotion("Strength Potion", 1, "Use the strength potion to double your damage for one round!");
+    public static final StrengthPotion STRENGTH_POTION = new StrengthPotion("Strength Potion", 1, "Use the strength potion to multiply your damage with 1.5!");
+    public static final GodPotion GOD_POTION = new GodPotion("God Potion", 5, "???");
 
     public static final Bow BOW = new Bow("Bow", 3, 10);
     public static final ThrowingKnife THROWING_KNIFE = new ThrowingKnife("Throwing Knife", 1, 6);
     public static final Club CLUB = new Club("Club", 2, 5, 5);
     public static final Sword SWORD = new Sword("Sword", 4, 9, 4);
+    public static final SnowballLauncher SNOWBALL_LAUNCHER = new SnowballLauncher("Snowball Launcher", 4, 10);
 
     public static List<Character> allCharacters = new ArrayList<>();
     public static List<Character> activeCharacters = new ArrayList<>();
@@ -39,6 +39,7 @@ public class rolegameMain {
         allCharacters.add(HUMAN);
         allCharacters.add(ORC);
         allCharacters.add(TROLL);
+        allCharacters.add(CHUCK_NORRIS);
     }
 
     public static void setActiveCharacter (Character characterPlayer1, Character characterPlayer2) {

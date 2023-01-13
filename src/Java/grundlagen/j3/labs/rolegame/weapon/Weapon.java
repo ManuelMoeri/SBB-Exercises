@@ -25,4 +25,8 @@ public class Weapon {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    public void setAttackValue(double attackValue) {
+        this.attackValue = attackValue;
+    }
 }

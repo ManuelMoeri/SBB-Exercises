@@ -2,16 +2,16 @@ package Java.grundlagen.j3.labs.rolegame.character;
 
 import Java.grundlagen.j3.labs.rolegame.weapon.Weapon;
 
-public class Orc extends Character {
-    public Orc(String nameOfCharacter, double healthPoints, int carryingCapacity, Weapon activeWeapon) {
+public class ChuckNorris extends Character {
+    public ChuckNorris(String nameOfCharacter, double healthPoints, int carryingCapacity, Weapon activeWeapon) {
         super(nameOfCharacter, healthPoints, carryingCapacity, activeWeapon);
     }
 
     @Override
     public double getDamage() {
         double finalDamage = super.getDamage();
-        if (this.getHealthPoints() <= 35) {
-            finalDamage = finalDamage * 3; // Noch hinzufügen das er nur halb so viel schaden bekommt.
+        if (new java.util.Random().nextInt(0,6) == 0) {
+            finalDamage = finalDamage * 3;
         }
         return finalDamage;
     }

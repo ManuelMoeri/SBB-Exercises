@@ -1,16 +1,16 @@
 package Java.grundlagen.j3.labs.rolegame.character;
 
-import Java.grundlagen.j3.labs.rolegame.fight;
+import Java.grundlagen.j3.labs.rolegame.Fight;
 import Java.grundlagen.j3.labs.rolegame.item.Item;
-import Java.grundlagen.j3.labs.rolegame.rolegameMain;
+import Java.grundlagen.j3.labs.rolegame.RolegameMain;
 import Java.grundlagen.j3.labs.rolegame.weapon.Weapon;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Character {
+    public double playerDamageSuffered;
     private String nameOfCharacter;
     private double healthPoints;
     private int carryingCapacity;
@@ -33,6 +33,10 @@ public class Character {
         }
 
         return finalDamage;
+    }
+
+    public String getNameOfCharacter() {
+        return nameOfCharacter;
     }
 
     public double getHealthPoints() {
@@ -102,12 +106,12 @@ public class Character {
     }
 
     public void addWeaponToInventory(Weapon weaponToAdd) {
-        rolegameMain.activeCharacters.get(fight.playerNumberInList).takeWeapon(weaponToAdd);
+        RolegameMain.activeCharacters.get(Fight.playerNumberInList).takeWeapon(weaponToAdd);
     }
 
     public void addItemToInventory(Item itemToAdd1, Item itemToAdd2) {
-        rolegameMain.activeCharacters.get(fight.playerNumberInList).takeItem(itemToAdd1);
-        rolegameMain.activeCharacters.get(fight.playerNumberInList).takeItem(itemToAdd2);
+        RolegameMain.activeCharacters.get(Fight.playerNumberInList).takeItem(itemToAdd1);
+        RolegameMain.activeCharacters.get(Fight.playerNumberInList).takeItem(itemToAdd2);
     }
 
     public void ringOfPowerMethod() {
@@ -115,16 +119,26 @@ public class Character {
     }
 
     public void ringOfProtectionMethod() {
-
+        if( new Random().nextDouble() < 0.15 ) {
+            System.out.println("The attack has been blocked!");
+            System.out.println(" ");
+            setHealthPoints(getHealthPoints() + playerDamageSuffered);
+        }
     }
 
     public void healingPotionMethod() {
         this.setHealthPoints(this.getHealthPoints() + 20);
     }
 
-    public double strengthPotionMethod() {
-        double finalDamage = 0;
-        finalDamage = activeWeapon.getAttackValue() * 2;
-        return finalDamage;
+    public void strengthPotionMethod() {
+        activeWeapon.setAttackValue(activeWeapon.getAttackValue() * 1.5);
+    }
+
+    public void godPotionMethod() {
+        activeWeapon.setAttackValue(activeWeapon.getAttackValue() * 3);
+    }
+
+    public void damageSuffered(double damageSuffered) {
+        playerDamageSuffered = damageSuffered;
     }
 }
