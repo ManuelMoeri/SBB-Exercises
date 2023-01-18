@@ -1,11 +1,5 @@
 package Java.grundlagen.j3.labs.rolegame.item;
 
-import Java.grundlagen.j3.labs.rolegame.character.Character;
-import Java.grundlagen.j3.labs.rolegame.weapon.Weapon;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Item {
     private String itemName;
     private int weight;

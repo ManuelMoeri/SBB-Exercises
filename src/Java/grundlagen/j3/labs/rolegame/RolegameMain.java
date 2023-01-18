@@ -1,5 +1,7 @@
 package Java.grundlagen.j3.labs.rolegame;
 
+import Java.grundlagen.j3.labs.rolegame.Armor.HeavyArmor;
+import Java.grundlagen.j3.labs.rolegame.Armor.LightArmor;
 import Java.grundlagen.j3.labs.rolegame.character.*;
 import Java.grundlagen.j3.labs.rolegame.character.Character;
 import Java.grundlagen.j3.labs.rolegame.item.*;
@@ -9,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RolegameMain {
-    public static final Dwarf DWARF = new Dwarf("Thorin", 120, 6, null);
-    public static final Fairy FAIRY = new Fairy("Elvenia", 100, 6, 10, null);
-    public static final Goblin GOBLIN = new Goblin("Larry", 80, 7, null);
-    public static final Human HUMAN = new Human("Bob", 100, 7, null);
-    public static final Orc ORC = new Orc("Zhor The Ruthless", 140, 10, null);
-    public static final Troll TROLL = new Troll("Trym", 160, 8, null);
-    public static final ChuckNorris CHUCK_NORRIS = new ChuckNorris("Chuck Norris", 120, 7, null);
+    public static final Dwarf DWARF = new Dwarf("Thorin", 120, 6, null, true, true, null, 10);
+    public static final Fairy FAIRY = new Fairy("Elvenia", 100, 6, 10, null, true, false, null, 10);
+    public static final Goblin GOBLIN = new Goblin("Larry", 80, 7, null, true, false, null, 10);
+    public static final Human HUMAN = new Human("Bob", 100, 7, null, true, true, null, 10);
+    public static final Orc ORC = new Orc("Zhor The Ruthless", 140, 10, null, true, true, null, 10);
+    public static final Troll TROLL = new Troll("Trym", 160, 8, null, false, false, null, 10);
+    public static final ChuckNorris CHUCK_NORRIS = new ChuckNorris("Chuck Norris", 120, 7, null, true, true, null, 10);
 
     public static final RingOfPower RING_OF_POWER = new RingOfPower("Ring of power", 1, "Equip the ring of power to gain +2 carrying capacity!");
     public static final RingOfProtection RING_OF_PROTECTION = new RingOfProtection("Ring of protection", 2, "Equip this ring to have a 15 % chance of blocking the attack!");
@@ -28,6 +30,9 @@ public class RolegameMain {
     public static final Club CLUB = new Club("Club", 2, 5, 5);
     public static final Sword SWORD = new Sword("Sword", 4, 9, 4);
     public static final SnowballLauncher SNOWBALL_LAUNCHER = new SnowballLauncher("Snowball Launcher", 4, 10);
+
+    public static final LightArmor LIGHT_ARMOR = new LightArmor("Light Armor", 2, "Equip the light armor to gain a 10% chance of blocking a attack!");
+    public static final HeavyArmor HEAVY_ARMOR = new HeavyArmor("Heavy Armor", 3, "Equip the heavy armor to gain a 25% chance of blocking a attack!");
 
     public static List<Character> allCharacters = new ArrayList<>();
     public static List<Character> activeCharacters = new ArrayList<>();

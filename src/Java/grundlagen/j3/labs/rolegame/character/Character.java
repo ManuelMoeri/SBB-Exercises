@@ -1,5 +1,6 @@
 package Java.grundlagen.j3.labs.rolegame.character;
 
+import Java.grundlagen.j3.labs.rolegame.Armor.Armor;
 import Java.grundlagen.j3.labs.rolegame.Fight;
 import Java.grundlagen.j3.labs.rolegame.item.Item;
 import Java.grundlagen.j3.labs.rolegame.RolegameMain;
@@ -10,17 +11,25 @@ import java.util.List;
 import java.util.Random;
 
 public class Character {
-    public double playerDamageSuffered;
+    private double playerDamageSuffered;
     private String nameOfCharacter;
     private double healthPoints;
     private int carryingCapacity;
     private Weapon activeWeapon;
+    private boolean isAbleToWearLightArmor;
+    private boolean isAbleToWearHeavyArmor;
+    private Armor activeArmor;
+    private int initiativeValue;
 
-    public Character(String nameOfCharacter, double healthPoints, int carryingCapacity, Weapon activeWeapon) {
+    public Character(String nameOfCharacter, double healthPoints, int carryingCapacity, Weapon activeWeapon, boolean isAbleToWearLightArmor, boolean isAbleToWearHeavyArmor, Armor activeArmor, int initiativeValue) {
         this.nameOfCharacter = nameOfCharacter;
         this.healthPoints = healthPoints;
         this.carryingCapacity = carryingCapacity;
         this.activeWeapon = activeWeapon;
+        this.isAbleToWearLightArmor = isAbleToWearLightArmor;
+        this.isAbleToWearHeavyArmor = isAbleToWearHeavyArmor;
+        this.activeArmor = activeArmor;
+        this.initiativeValue = initiativeValue;
     }
     public double getDamage() {
         Random random = new Random();
@@ -39,6 +48,14 @@ public class Character {
         return nameOfCharacter;
     }
 
+    public boolean getIsAbleToWearLightArmor() {
+        return isAbleToWearLightArmor;
+    }
+
+    public boolean getIsAbleToWearHeavyArmor() {
+        return isAbleToWearLightArmor;
+    }
+
     public double getHealthPoints() {
         return healthPoints;
     }
@@ -51,6 +68,14 @@ public class Character {
         return activeWeapon;
     }
 
+    public int getInitiativeValue() {
+        return initiativeValue;
+    }
+
+    public void setActiveArmor(Armor activeArmor) {
+        this.activeArmor = activeArmor;
+    }
+
     public void setCarryingCapacity(int carryingCapacity) {
         this.carryingCapacity = carryingCapacity;
     }
@@ -61,6 +86,10 @@ public class Character {
 
     public void setHealthPoints(double healthPoints) {
         this.healthPoints = healthPoints;
+    }
+
+    public void setInitiativeValue(int initiativeValue) {
+        this.initiativeValue = initiativeValue;
     }
 
     public List<Weapon> weaponInventory = new ArrayList<>();
@@ -94,6 +123,21 @@ public class Character {
             System.out.println("This item is to heavy for you!");
         }
     }
+
+    public void takeArmor(Armor armorToTake) {
+        if (armorToTake.getArmorWeight() <= this.carryingCapacity) {
+            this.setCarryingCapacity(this.getCarryingCapacity() - armorToTake.getArmorWeight());
+            setActiveArmor(armorToTake);
+            if (armorToTake.equals(RolegameMain.LIGHT_ARMOR)) {
+                setInitiativeValue(getInitiativeValue() - 2);
+            } else if (armorToTake.equals(RolegameMain.HEAVY_ARMOR)) {
+                setInitiativeValue(getInitiativeValue() - 5);
+            }
+            System.out.println("The armor " + armorToTake.getArmorName() + " has been equiped");
+        } else {
+            System.out.println("This armor is to heavy for you!");
+        }
+    }
     public void useItem(Item itemToUse) {
 
         String whichItem = itemToUse.getItemName();
@@ -119,7 +163,7 @@ public class Character {
     }
 
     public void ringOfProtectionMethod() {
-        if( new Random().nextDouble() < 0.15 ) {
+        if( new Random().nextInt(1, 100) <= 15 ) {
             System.out.println("The attack has been blocked!");
             System.out.println(" ");
             setHealthPoints(getHealthPoints() + playerDamageSuffered);

@@ -1,14 +1,12 @@
 package Java.grundlagen.j3.labs.rolegame;
 
+import Java.grundlagen.j3.labs.rolegame.Armor.Armor;
 import Java.grundlagen.j3.labs.rolegame.character.Character;
 import Java.grundlagen.j3.labs.rolegame.item.Item;
 import Java.grundlagen.j3.labs.rolegame.weapon.Weapon;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class Fight {
@@ -83,7 +81,7 @@ public class Fight {
                 characterPlayer1 = RolegameMain.CHUCK_NORRIS;
                 break;
         }
-        buildLog("Player1 choose " + characterPlayer1.getNameOfCharacter());
+        buildLog("Player1 chose " + characterPlayer1.getNameOfCharacter());
 
         System.out.println(" ");
         System.out.println("Choose your character Player2 :");
@@ -124,8 +122,26 @@ public class Fight {
         }
 
         RolegameMain.setActiveCharacter(characterPlayer1, characterPlayer2);
-        buildLog("Player2 choose " + characterPlayer2.getNameOfCharacter());
+        buildLog("Player2 chose " + characterPlayer2.getNameOfCharacter());
 
+
+        chooseWeaponPlayer1();
+        chooseWeaponPlayer2();
+
+        chooseItemPlayer1();
+        chooseItemPlayer2();
+
+        chooseArmorPlayer1();
+        chooseArmorPlayer2();
+
+        System.out.println("Now, let's begin");
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println(" ");
+
+        fightInRound();
+    }
+
+    public static void chooseWeaponPlayer1() {
         System.out.println(" ");
         System.out.println("Player1 choose your weapon :");
         System.out.println(" ");
@@ -151,7 +167,7 @@ public class Fight {
             case "4":
                 weaponPlayer1 = RolegameMain.SWORD;
                 break;
-            case "5" :
+            case "5":
                 weaponPlayer1 = RolegameMain.SNOWBALL_LAUNCHER;
                 break;
         }
@@ -159,11 +175,13 @@ public class Fight {
         characterPlayer1.addWeaponToInventory(weaponPlayer1);
         characterPlayer1.setActiveWeapon(weaponPlayer1);
         buildLog("Player1 equiped the weapon " + weaponPlayer1.getWeaponName());
+    }
 
+    public static void chooseWeaponPlayer2() {
         System.out.println(" ");
         System.out.println("Choose your weapon Player2 :");
         System.out.println("---------------------------------------------------------------------------");
-        whichWeapon = userInput.nextLine();
+        String whichWeapon = userInput.nextLine();
         Weapon weaponPlayer2 = null;
         playerNumberInList = 1;
 
@@ -180,7 +198,7 @@ public class Fight {
             case "4":
                 weaponPlayer2 = RolegameMain.SWORD;
                 break;
-            case "5" :
+            case "5":
                 weaponPlayer2 = RolegameMain.SNOWBALL_LAUNCHER;
                 break;
         }
@@ -189,7 +207,8 @@ public class Fight {
         characterPlayer2.setActiveWeapon(weaponPlayer2);
         buildLog("Player2 equiped the weapon " + weaponPlayer2.getWeaponName());
 
-
+    }
+    public static void chooseItemPlayer1() {
         System.out.println(" ");
         System.out.println("Player1 choose your items! You can take a total of 2 :");
         System.out.println(" ");
@@ -242,13 +261,15 @@ public class Fight {
         characterPlayer1.addItemToInventory(item1Player1, item2Player1);
         buildLog("Player1 choose the item " + item1Player1.getItemName());
         buildLog("Player1 choose the item " + item2Player1.getItemName());
+    }
 
+    public static void chooseItemPlayer2() {
         System.out.println(" ");
         System.out.println("Choose your Items Player2 :");
         System.out.println(" ");
         System.out.println("---------------------------------------------------------------------------");
-        item1 = userInput.nextLine();
-        item2 = userInput.nextLine();
+        String item1 = userInput.nextLine();
+        String item2 = userInput.nextLine();
         playerNumberInList = 1;
 
         switch (item1) {
@@ -291,54 +312,133 @@ public class Fight {
         buildLog("Player2 choose the item " + item1Player2.getItemName());
         buildLog("Player2 choose the item " + item2Player2.getItemName());
         System.out.println(" ");
-        System.out.println("Now, let's begin");
-        System.out.println("---------------------------------------------------------------------------");
-        System.out.println(" ");
+    }
 
-        fightInRound();
+    public static void chooseArmorPlayer1() {
+        System.out.println("Player1 choose your armor:");
+        System.out.println(" ");
+        System.out.println("1 = " + RolegameMain.LIGHT_ARMOR.getArmorName() + " | Weight: " + RolegameMain.LIGHT_ARMOR.getArmorWeight() + " | Description: " + RolegameMain.LIGHT_ARMOR.getArmorDescription());
+        System.out.println("2 = " + RolegameMain.HEAVY_ARMOR.getArmorName() + " | Weight: " + RolegameMain.HEAVY_ARMOR.getArmorWeight() + " | Description: " + RolegameMain.HEAVY_ARMOR.getArmorDescription());
+        System.out.println("3 = I don't need any armor you fool!");
+        System.out.println("---------------------------------------------------------------------------");
+        String whichArmor = userInput.nextLine();
+        Armor armorPlayer1 = null;
+
+        switch (whichArmor) {
+            case "1":
+                if (characterPlayer1.getIsAbleToWearLightArmor()) {
+                    armorPlayer1 = RolegameMain.LIGHT_ARMOR;
+                }
+                break;
+            case "2":
+                if (characterPlayer1.getIsAbleToWearHeavyArmor()) {
+                    armorPlayer1 = RolegameMain.HEAVY_ARMOR;
+                }
+                break;
+            case "3" :
+                buildLog("Player1 chose no armor!");
+                break;
+        }
+        if(armorPlayer1 != null) {
+            buildLog("Player1 choose " + armorPlayer1.getArmorName());
+            characterPlayer1.takeArmor(armorPlayer1);
+            System.out.println(" ");
+        }
+    }
+
+    public static void chooseArmorPlayer2() {
+        System.out.println("Player2 choose your armor:");
+        System.out.println(" ");
+        System.out.println("1 = " + RolegameMain.LIGHT_ARMOR.getArmorName() + " | Weight: " + RolegameMain.LIGHT_ARMOR.getArmorWeight() + " | Description: " + RolegameMain.LIGHT_ARMOR.getArmorDescription());
+        System.out.println("2 = " + RolegameMain.HEAVY_ARMOR.getArmorName() + " | Weight: " + RolegameMain.HEAVY_ARMOR.getArmorWeight() + " | Description: " + RolegameMain.HEAVY_ARMOR.getArmorDescription());
+        System.out.println("3 = I don't need any armor you fool!");
+        System.out.println("---------------------------------------------------------------------------");
+        String whichArmor = userInput.nextLine();
+        Armor armorPlayer2 = null;
+
+        switch (whichArmor) {
+            case "1":
+                if (characterPlayer2.getIsAbleToWearLightArmor()) {
+                    armorPlayer2 = RolegameMain.LIGHT_ARMOR;
+                } else {
+                    System.out.println("Your character is not able to wear light armor!");
+                }
+                break;
+            case "2":
+                if (characterPlayer2.getIsAbleToWearHeavyArmor()) {
+                    armorPlayer2 = RolegameMain.HEAVY_ARMOR;
+                } else {
+                    System.out.println("Your character is not able to wear heavy armor!");
+                }
+                break;
+            case "3" :
+                buildLog("Player2 chose no armor!");
+                break;
+        }
+        if(armorPlayer2 != null) {
+            buildLog("Player2 choose " + armorPlayer2.getArmorName());
+            characterPlayer2.takeArmor(armorPlayer2);
+            System.out.println(" ");
+        }
     }
 
     public static void fightInRound() {
-        for (int round = 1; round <= 20; round++) {
-            loop:
-            while (true) {
-                System.out.println("Round " + round + ":");
-                System.out.println("---------------------------------------------------------------------------");
-                System.out.println(" ");
-                System.out.println("Player1, what would you like to do?");
-                System.out.println(" ");
-                System.out.println("1 - Attack");
-                System.out.println("2 - Use a item");
-                System.out.println("3 - Surrender");
-                String whatNow = userInput.nextLine();
-
-                switch (whatNow) {
-                    case "1" -> {
-                        attackPlayer1();
-                        break loop;
-                    }
-                    case "2" -> useItemPlayer1();
-                    case "3" -> surrenderPlayer1();
-
-                }
+        int round;
+        for (round = 1; round <= 20; round++) {
+            buildLog("Round " + round + ":");
+            if (characterPlayer2.getInitiativeValue() > characterPlayer1.getInitiativeValue()) {
+                whatToDoPlayer2();
+                whatToDoPlayer1(round);
+            } else {
+                whatToDoPlayer1(round);
+                whatToDoPlayer2();
             }
-            loop:
-            while (true) {
-                System.out.println("Player2, what would you like to do?");
-                System.out.println(" ");
-                System.out.println("1 - Attack");
-                System.out.println("2 - Use a item");
-                System.out.println("3 - Surrender");
-                String whatNow = userInput.nextLine();
-                System.out.println("---------------------------------------------------------------------------");
-                switch (whatNow) {
-                    case "1" -> {
-                        attackPlayer2();
-                        break loop;
-                    }
-                    case "2" -> useItemPlayer2();
-                    case "3" -> surrenderPlayer2();
+        }
+    }
+
+    public static void whatToDoPlayer1(int round) {
+        loop:
+        while (true) {
+            System.out.println("Round " + round + ":");
+            System.out.println("---------------------------------------------------------------------------");
+            System.out.println(" ");
+            System.out.println("Player1, what would you like to do?");
+            System.out.println(" ");
+            System.out.println("1 - Attack");
+            System.out.println("2 - Use a item");
+            System.out.println("3 - Surrender");
+            String whatNow = userInput.nextLine();
+
+
+            switch (whatNow) {
+                case "1" -> {
+                    attackPlayer1();
+                    break loop;
                 }
+                case "2" -> useItemPlayer1();
+                case "3" -> surrenderPlayer1();
+
+            }
+        }
+    }
+
+    public static void whatToDoPlayer2() {
+        loop:
+        while (true) {
+            System.out.println("Player2, what would you like to do?");
+            System.out.println(" ");
+            System.out.println("1 - Attack");
+            System.out.println("2 - Use a item");
+            System.out.println("3 - Surrender");
+            String whatNow = userInput.nextLine();
+            System.out.println("---------------------------------------------------------------------------");
+            switch (whatNow) {
+                case "1" -> {
+                    attackPlayer2();
+                    break loop;
+                }
+                case "2" -> useItemPlayer2();
+                case "3" -> surrenderPlayer2();
             }
         }
     }
@@ -349,11 +449,14 @@ public class Fight {
         characterPlayer2.setHealthPoints(characterPlayer2.getHealthPoints() - randomDamage1);
         System.out.println(" ");
         System.out.println("Player1 dealt " + randomDamage1 + " damage");
+        buildLog("Player1 dealt " + randomDamage1 + " damage");
         if (characterPlayer2.getHealthPoints() < 0) {
             System.out.println(" ");
             System.out.println("Player2 died");
             System.out.println("Player1 wins!");
             System.out.println(" ");
+            buildLog("Player2 died");
+            buildLog("Player1 wins!");
             logCase();
         } else {
             System.out.println("Player2 has " + characterPlayer2.getHealthPoints() + " health points left");
@@ -380,6 +483,8 @@ public class Fight {
 
         Item itemToUse = characterPlayer1.itemInventory.get(itemNumberByUser - 1);
 
+        buildLog("Player1 used the item " + itemToUse.getItemName());
+
         switch (itemToUse.getItemName()) {
             case "Ring of power":
                 characterPlayer1.ringOfPowerMethod();
@@ -397,7 +502,7 @@ public class Fight {
                 characterPlayer1.strengthPotionMethod();
                 characterPlayer1.itemInventory.remove(RolegameMain.STRENGTH_POTION);
                 break;
-            case "God Potion" :
+            case "God Potion":
                 characterPlayer1.godPotionMethod();
                 characterPlayer1.itemInventory.remove(RolegameMain.GOD_POTION);
                 break;
@@ -409,6 +514,7 @@ public class Fight {
         System.out.println("Player1 has surrendered");
         System.out.println("Player2 wins!");
         System.out.println(" ");
+        buildLog("Player1 has surrendered");
         logCase();
     }
 
@@ -417,11 +523,14 @@ public class Fight {
         characterPlayer1.setHealthPoints(characterPlayer1.getHealthPoints() - randomDamage2);
         System.out.println(" ");
         System.out.println("Player2 dealt " + randomDamage2 + " damage");
+        buildLog("Player2 dealt " + randomDamage2 + " damage");
         if (characterPlayer1.getHealthPoints() < 0) {
             System.out.println(" ");
             System.out.println("Player1 died");
             System.out.println("Player2 wins!");
             System.out.println(" ");
+            buildLog("Player1 died");
+            buildLog("Player2 wins!");
             logCase();
         } else {
             System.out.println("Player1 has " + characterPlayer1.getHealthPoints() + " health points left");
@@ -447,6 +556,8 @@ public class Fight {
 
         Item itemToUse = characterPlayer2.itemInventory.get(itemNumberByUser - 1);
 
+        buildLog("Player2 used the item " + itemToUse.getItemName());
+
         switch (itemToUse.getItemName()) {
             case "Ring of power":
                 characterPlayer2.ringOfPowerMethod();
@@ -464,7 +575,7 @@ public class Fight {
                 characterPlayer2.strengthPotionMethod();
                 characterPlayer2.itemInventory.remove(RolegameMain.STRENGTH_POTION);
                 break;
-            case "God Potion" :
+            case "God Potion":
                 characterPlayer2.godPotionMethod();
                 characterPlayer2.itemInventory.remove(RolegameMain.GOD_POTION);
                 break;
@@ -477,6 +588,7 @@ public class Fight {
         System.out.println("Player2 has surrendered");
         System.out.println("Player1 wins!");
         System.out.println(" ");
+        buildLog("Player2 has surrendered");
         logCase();
     }
 
@@ -507,9 +619,9 @@ public class Fight {
         System.out.println("Please describe the bug :");
         String bugDescription = userInput.nextLine();
         System.out.println("Thanks for supporting the dev team");
-        System.out.println(" ");
+        System.out.println();
         System.out.println("---------------------------------------------------------------------------");
-        System.out.println(" ");
+        System.out.println();
         fightCommands();
     }
 
