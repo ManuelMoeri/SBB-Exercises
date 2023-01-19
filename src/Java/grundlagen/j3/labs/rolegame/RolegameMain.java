@@ -29,7 +29,7 @@ public class RolegameMain {
     public static final ThrowingKnife THROWING_KNIFE = new ThrowingKnife("Throwing Knife", 1, 6);
     public static final Club CLUB = new Club("Club", 2, 5, 5);
     public static final Sword SWORD = new Sword("Sword", 4, 9, 4);
-    public static final SnowballLauncher SNOWBALL_LAUNCHER = new SnowballLauncher("Snowball Launcher", 4, 10);
+    public static final SnowballLauncher SNOWBALL_LAUNCHER = new SnowballLauncher("Snowball Launcher", 4, 11);
 
     public static final LightArmor LIGHT_ARMOR = new LightArmor("Light Armor", 2, "Equip the light armor to gain a 10% chance of blocking a attack!");
     public static final HeavyArmor HEAVY_ARMOR = new HeavyArmor("Heavy Armor", 3, "Equip the heavy armor to gain a 25% chance of blocking a attack!");
