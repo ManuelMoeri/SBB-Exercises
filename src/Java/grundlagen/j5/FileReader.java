@@ -57,7 +57,7 @@ public class FileReader {
             System.out.println("Amount of words: " + counter);
             System.out.println("Amount of words with q: " + wordsWithQ.size());
             System.out.println("Amount of words with e: " + wordsWithE.size());
-            System.out.println("Amount of words shorter than 4: " + wordsShorterThan4.size());
+            System.out.println("Amount of words shorter than 4 characters: " + wordsShorterThan4.size());
 
             System.out.println(specialCharacters);
 
