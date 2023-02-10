@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 public class MyArrayList<E> implements MyListInterfaceSimple<E> {
 
-
     private E[] content;
     private E[] bufferList;
 
@@ -78,17 +77,19 @@ public class MyArrayList<E> implements MyListInterfaceSimple<E> {
 
     @Override
     public int size() {
-        System.out.println("The current size of the Arraylist is: " + content.length);
+        if (content == null) {
+            return 0;
+        }
         return content.length;
     }
 
     @Override
     public boolean isEmpty() {
-        if (content == null) {
-            System.out.println("The Arraylist is empty!");
+        if (content == null || content.length == 0) {
+            System.out.println("The list is empty!");
             return true;
         } else {
-            System.out.println("The Arraylist isn't empty!");
+            System.out.println("The list isn't empty!");
             return false;
         }
     }

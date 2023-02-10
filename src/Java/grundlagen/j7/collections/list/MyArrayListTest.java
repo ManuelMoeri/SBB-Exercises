@@ -20,9 +20,5 @@ public class MyArrayListTest {
         myArrayList.remove(3);
         System.out.println("");
         System.out.println(myArrayList.toString());
-        System.out.println("");
-        myArrayList.clear();
-        System.out.println("");
-        System.out.println(myArrayList.toString());
     }
 }

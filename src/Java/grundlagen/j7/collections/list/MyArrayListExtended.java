@@ -78,17 +78,19 @@ public class MyArrayListExtended<E> implements MyListInterfaceExtended<E> {
 
     @Override
     public int size() {
-        System.out.println("The current size of the Arraylist is: " + content.length);
+        if (content == null) {
+            return 0;
+        }
         return content.length;
     }
 
     @Override
     public boolean isEmpty() {
-        if (content == null) {
-            System.out.println("The Arraylist is empty!");
+        if (content == null || content.length == 0) {
+            System.out.println("The list is empty!");
             return true;
         } else {
-            System.out.println("The Arraylist isn't empty!");
+            System.out.println("The list isn't empty!");
             return false;
         }
     }
@@ -215,7 +217,7 @@ public class MyArrayListExtended<E> implements MyListInterfaceExtended<E> {
             content[i] = bufferList[i];
         }
 
-        System.out.println("The object with the index " + indexOfO + " has been removed");
+        System.out.println("The object " + "\"" + o + "\"" + " has been removed");
         return false;
     }
 }
