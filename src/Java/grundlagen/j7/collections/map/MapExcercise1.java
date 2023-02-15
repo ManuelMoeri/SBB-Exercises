@@ -2,14 +2,13 @@ package Java.grundlagen.j7.collections.map;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Array;
 import java.util.*;
 
 public class MapExcercise1 {
 
     public static Map<Integer, String> plzToCityMap = new HashMap<>();
     public static File allPLZ;
-    public static String TownshipName = "";
-    public static int PLZ = 0;
     public static Scanner scanner;
 
     public static void createScanner() {
@@ -21,10 +20,25 @@ public class MapExcercise1 {
         }
     }
 
+    public static void seperateCharactersAndNumbers() {
+        try {
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                String test = scanner.nextLine();
+                test = test.replaceFirst(",", "@").replace("\"", "");
+                String[] splittedArray = test.split("@");
+                plzToCityMap.put(Integer.parseInt(splittedArray[0]), splittedArray[1]);
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         createScanner();
+        seperateCharactersAndNumbers();
         amountOfPLZ();
-        smallestPLZBern();
+        smallestAndBiggestPLZBern();
         amountOfTownshipsWithMoreThan10Characters();
         amountOfTownshipsWith7Characters();
         amountOfTownshipsWithTheLetterSequenceENT();
@@ -36,21 +50,17 @@ public class MapExcercise1 {
     }
 
     private static void amountOfPLZ() {
-        List<String> lmao = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            TownshipName = scanner.nextLine();
-            PLZ = scanner.nextInt();
-            lmao.add(TownshipName);
-        }
-        System.out.println(lmao);
+        System.out.println("- Anzahl PLZ: " + plzToCityMap.size());
     }
 
-    private static void smallestPLZBern() {
+    private static void smallestAndBiggestPLZBern() {
 
+        System.out.println("- Kleinste PLZ der Gemeinde Bern: ");
     }
 
     private static void amountOfTownshipsWithMoreThan10Characters() {
 
+        System.out.println("- Anzahl Gemeinden mit mehr als 10 Buchstaben: ");
     }
 
     private static void amountOfTownshipsWith7Characters() {
