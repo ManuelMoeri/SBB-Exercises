@@ -63,15 +63,15 @@ public class MapExcercise1 {
             }
         }
 
-        outputValidation.logAndPrint("- Kleinste PLZ der Gemeinde Bern: " + bernPLZ.get(0));
+        outputValidation.logAndPrint("- Kleinste PLZ der Gemeinde Bern: " + bernPLZ.get(0) + " Bern");
 
-        outputValidation.logAndPrint("- Grösste PLZ der Gemeinde Bern: " + bernPLZ.get(bernPLZ.size() -1));
+        outputValidation.logAndPrint("- Grösste PLZ der Gemeinde Bern: " + bernPLZ.get(bernPLZ.size() -1) + " Bern");
     }
 
     private static void amountOfTownshipsWithMoreThan10Letters() {
         List townshipsWithMoreThan10Letters = new ArrayList<>();
         for (int keyFromMap : plzToCityMap.keySet()) {
-            if (plzToCityMap.get(keyFromMap).length() > 10) {
+            if (plzToCityMap.get(keyFromMap).trim().length() > 10) {
                 townshipsWithMoreThan10Letters.add(keyFromMap);
             }
         }
@@ -82,7 +82,7 @@ public class MapExcercise1 {
     private static void amountOfTownshipsWith7Letters() {
         List townshipsWith7Letters = new ArrayList<>();
         for (int keyFromMap : plzToCityMap.keySet()) {
-            if (plzToCityMap.get(keyFromMap).length() == 7) {
+            if (plzToCityMap.get(keyFromMap).trim().length() == 7) {
                 townshipsWith7Letters.add(keyFromMap);
             }
         }
@@ -151,7 +151,6 @@ public class MapExcercise1 {
 
         outputValidation.logAndPrint("- Grössten Gemeinden: " + longestTownships.stream().sorted().toList().toString().replace("[", "").replace("]", ""));
 
-        outputValidation.printControlHash();
-        outputValidation.verifyControlHash(1768988137);
+        System.out.println(outputValidation.verifyControlHash(1768988137));
     }
 }
