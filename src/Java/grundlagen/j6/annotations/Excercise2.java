@@ -12,10 +12,10 @@ public class Excercise2 {
     public static void quizMethod() {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Let's play a game!");
-        System.out.println("3 Questions with 3 possible answers! Try to score as many points as possible");
+        System.out.println("3 Questions with 3 possible answers! Try to score as many points as possible (Press enter to continue)");
+        String lol = userInput.nextLine();
         int score = 0;
         String whichAnswer = "";
-        System.out.println("");
         System.out.println("Question number one: What is Caesar supposed to have said when he crossed the Rubicon?");
         System.out.println("1 = veni, vidi, vici");
         System.out.println("2 = divide et empera");
@@ -84,16 +84,16 @@ public class Excercise2 {
 
         switch (score) {
             case 0 :
-                System.out.println("Your total score is : " + score + ". Well that's awkward");
+                System.out.println("Your total score is " + score + "/3. Well that's awkward");
                 break;
             case 1 :
-                System.out.println("Your total score is : " + score + ". It's okay I guess");
+                System.out.println("Your total score is " + score + "/3. It's okay I guess");
                 break;
             case 2 :
-                System.out.println("Your total score is : " + score + ". Not bad! Still some room for improvement though");
+                System.out.println("Your total score is " + score + "/3. Not bad! Still some room for improvement though");
                 break;
             case 3 :
-                System.out.println("Your total score is : " + score + ". You either are really good at general knowledge or you cheated :P ");
+                System.out.println("Your total score is " + score + "/3. You either are really good at general knowledge or you cheated :P ");
                 break;
         }
     }
