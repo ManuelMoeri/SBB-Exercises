@@ -5,10 +5,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.CLASS.RUNTIME)
+@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.CONSTRUCTOR)
 
 public @interface PersonData {
-    String[] names();
-    int[] ages();
+    String[] names() default "none";
+    int[] ages() default 0;
 }

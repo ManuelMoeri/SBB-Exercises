@@ -16,14 +16,21 @@ public class DocumentationProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        for(TypeElement annotation:annotations){
-            Set<?extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(annotation);
-            for(Element element:annotatedElements) {
-                Excercise1 annotation1 = element.getAnnotation(Excercise1.class);
-                System.out.println("------");
-                System.out.println(Arrays.toString(annotation1.authors()) + ", " + annotation1.description());
-                System.out.println(annotation1.version());
+        try {
+            for (TypeElement annotation : annotations) {
+                Set<? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(annotation);
+                for (Element element : annotatedElements) {
+                    Excercise1 annotation1 = element.getAnnotation(Excercise1.class);
+                    Class<?> clazz = Class.forName("Java.grundlagen.j6.annotations.Excercise2");
+                    System.out.println(clazz);
+                    System.out.println("------");
+                    System.out.println(Arrays.toString(annotation1.authors()) + ", " + annotation1.description());
+                    System.out.println(annotation1.version());
+                }
             }
+        } catch (
+                ClassNotFoundException e) {
+            System.out.println(e);
         }
         return false;
     }
